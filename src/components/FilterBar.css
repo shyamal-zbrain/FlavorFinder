@@ -1,0 +1,131 @@
+.filter-bar {
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.5rem 0;
+    backdrop-filter: blur(20px);
+    animation: slideIn 0.6s ease;
+}
+
+.filter-content {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.filter-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.filter-label svg {
+    color: var(--primary);
+}
+
+.filter-select {
+    padding: 0.875rem 1.25rem;
+    background: var(--bg-glass);
+    border: 2px solid var(--border-color);
+    color: var(--text-primary);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23b8b8d4' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 3rem;
+}
+
+.filter-select:hover {
+    border-color: var(--primary);
+    background-color: var(--bg-tertiary);
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+.filter-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.filter-actions .btn {
+    white-space: nowrap;
+}
+
+.filter-actions .btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.filter-actions .btn:disabled:hover {
+    transform: none;
+    box-shadow: var(--shadow-md);
+}
+
+.random-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.random-btn::after {
+    content: '✨';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    font-size: 2rem;
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.random-btn:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+.random-btn:hover svg {
+    opacity: 0;
+}
+
+@media (max-width: 1024px) {
+    .filter-content {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-group {
+        min-width: 100%;
+    }
+
+    .filter-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .filter-actions .btn {
+        width: 100%;
+    }
+}
