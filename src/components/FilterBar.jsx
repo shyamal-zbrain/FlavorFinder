@@ -31,8 +31,7 @@ const FilterBar = ({ onFilter, onRandomMeal }) => {
         setSelectedCategory(category);
         setSelectedArea('');
         if (category) {
-            setActiveFilter('category');
-            onFilter('category', category);
+            onFilter('all', category);
         } else {
             setActiveFilter('all');
             onFilter('all', '');

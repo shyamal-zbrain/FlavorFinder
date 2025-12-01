@@ -7,7 +7,7 @@ import { mealAPI } from './services/api';
 import './App.css';
 
 function App() {
-  const [meals, setMeals] = useState([]);
+  const [meals, setMeals] = useState({});
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedMealId, setSelectedMealId] = useState(null);
@@ -75,7 +75,7 @@ function App() {
       setLoading(true);
       const data = await mealAPI.getRandomMeal();
       if (data.meals && data.meals.length > 0) {
-        setSelectedMealId(data.meals[0].idMeal);
+        console.log("Random meal found:", data.meals[0].strMeal);
       }
     } catch (error) {
       console.error('Error loading random meal:', error);

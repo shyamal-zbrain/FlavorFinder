@@ -23,7 +23,6 @@ const MealCard = ({ meal, onClick }) => {
             </div>
 
             <div className="meal-content">
-                <h3 className="meal-title">{meal.strMeal}</h3>
 
                 <div className="meal-meta">
                     {meal.strCategory && (

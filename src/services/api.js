@@ -1,4 +1,4 @@
-const BASE_URL = 'https://www.themealdb.com/api/json/v1/1';
+const BASE_URL = 'https://www.themealdb.com/api/json/v2/1';
 
 export const mealAPI = {
   // Search meal by name
