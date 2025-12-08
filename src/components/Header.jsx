@@ -1,12 +1,10 @@
 import React from 'react';
 import './Header.css';
 
-const Header = ({ searchQuery, setSearchQuery }) => {
+const Header = ({ searchQuery, setSearchQuery, onSearch }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (searchQuery.trim()) {
-            console.log("Searching for:", searchQuery);
-        }
+        if (searchQuery.trim()) onSearch(searchQuery);
     };
 
     return (
@@ -16,7 +14,7 @@ const Header = ({ searchQuery, setSearchQuery }) => {
                     <div className="logo-section">
                         <h1 className="logo">
                             <span className="logo-icon">🍳</span>
-                            FlavourFinder
+                            FlavorFinder
                         </h1>
                         <p className="tagline">Discover delicious recipes from around the world</p>
                     </div>
