@@ -44,7 +44,7 @@ describe('App - Category filter flow', () => {
       expect(screen.getByText(/Featured Recipes|Search Results|Filtered by/i)).toBeInTheDocument();
     });
 
-    const categorySelect = await screen.findByLabelText(/Category/i);
+    const categorySelect = await screen.findByRole('combobox', { name: /Category/i });
     await userEvent.selectOptions(categorySelect, 'Seafood');
 
     // Ensure filterByCategory was called correctly

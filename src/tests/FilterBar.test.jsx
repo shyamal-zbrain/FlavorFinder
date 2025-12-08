@@ -25,7 +25,7 @@ describe('FilterBar', () => {
     render(<FilterBar onFilter={onFilter} onRandomMeal={onRandomMeal} />);
 
     // wait for categories to load
-    const select = await screen.findByLabelText(/Category/i);
+    const select = await screen.findByRole('combobox', { name: /Category/i });
     await userEvent.selectOptions(select, 'Seafood');
 
     await waitFor(() => {
