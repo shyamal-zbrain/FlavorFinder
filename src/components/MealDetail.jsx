@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { mealAPI } from '../services/api';
 import './MealDetail.css';
 
