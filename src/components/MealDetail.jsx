@@ -65,7 +65,7 @@ const MealDetail = ({ mealId, onClose }) => {
                 </button>
 
                 <div className="modal-header">
-                    <img src={meal.strMealThumbnail} alt={meal.strMeal} className="modal-image" />
+                    <img src={meal.strMealThumb} alt={meal.strMeal} className="modal-image" />
                     <div className="modal-header-content">
                         <h2 className="modal-title">{meal.strMeal}</h2>
                         <div className="modal-badges">
