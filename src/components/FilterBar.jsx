@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { mealAPI } from '../services/api';
 import './FilterBar.css';
 
@@ -8,10 +8,6 @@ const FilterBar = ({ onFilter, onRandomMeal }) => {
     const [selectedCategory, setSelectedCategory] = useState('');
     const [selectedArea, setSelectedArea] = useState('');
     const [activeFilter, setActiveFilter] = useState('all');
-
-    useEffect(() => {
-        loadFilters();
-    }, []);
 
     const loadFilters = async () => {
         try {
@@ -25,6 +21,12 @@ const FilterBar = ({ onFilter, onRandomMeal }) => {
             console.error('Error loading filters:', error);
         }
     };
+
+    useEffect(() => {
+        loadFilters();
+        // only on mount
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const handleCategoryChange = (e) => {
         const category = e.target.value;
