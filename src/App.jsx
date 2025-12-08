@@ -5,13 +5,17 @@ import MealCard from './components/MealCard';
 import MealDetail from './components/MealDetail';
 import { mealAPI } from './services/api';
 import './App.css';
+import { useState, useEffect } from 'react';
+import { getRandomIndexExcluding } from './utils/random';
 
 function App() {
-  const [meals, setMeals] = useState({});
+  const [meals, setMeals] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedMealId, setSelectedMealId] = useState(null);
   const [currentView, setCurrentView] = useState('featured');
+  const [lastRandomIndex, setLastRandomIndex] = useState(null);
+  const [lastRandomMealId, setLastRandomMealId] = useState(null);
 
   useEffect(() => {
     loadFeaturedMeals();
@@ -73,9 +77,28 @@ function App() {
   const handleRandomMeal = async () => {
     try {
       setLoading(true);
-      const data = await mealAPI.getRandomMeal();
-      if (data.meals && data.meals.length > 0) {
-        console.log("Random meal found:", data.meals[0].strMeal);
+      if (meals && meals.length > 0) {
+        const idx = getRandomIndexExcluding(lastRandomIndex, meals.length);
+        const id = meals[idx].idMeal;
+        setSelectedMealId(id);
+        setLastRandomIndex(idx);
+        setLastRandomMealId(id);
+        return;
+      }
+      let attempt = 0;
+      let selectedId = null;
+      while (attempt < 3) {
+        const data = await mealAPI.getRandomMeal();
+        if (data?.meals?.length) {
+          const newId = data.meals[0].idMeal;
+          selectedId = newId;
+          if (!lastRandomMealId || newId !== lastRandomMealId) break;
+        }
+        attempt++;
+      }
+      if (selectedId) {
+        setSelectedMealId(selectedId);
+        setLastRandomMealId(selectedId);
       }
     } catch (error) {
       console.error('Error loading random meal:', error);
