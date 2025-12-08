@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
 import { mealAPI } from '../services/api';
 import './MealDetail.css';
 
@@ -65,7 +67,7 @@ const MealDetail = ({ mealId, onClose }) => {
                 </button>
 
                 <div className="modal-header">
-                    <img src={meal.strMealThumbnail} alt={meal.strMeal} className="modal-image" />
+                    <img src={mealAPI.getMealThumbnail(meal.strMealThumb, 'full')} alt={meal.strMeal} className="modal-image" loading="lazy" />
                     <div className="modal-header-content">
                         <h2 className="modal-title">{meal.strMeal}</h2>
                         <div className="modal-badges">
