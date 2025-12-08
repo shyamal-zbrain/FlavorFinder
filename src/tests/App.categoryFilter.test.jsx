@@ -42,7 +42,7 @@ describe('App - Category filter flow', () => {
 
     // Wait for initial featured meals to load
     await waitFor(() => {
-      expect(screen.getByText(/Featured Recipes|Search Results|Filtered by/i)).toBeInTheDocument();
+      expect(screen.getByText(/Featured Recipes|Search Results|Filtered by/i)).toBeTruthy();
     });
 
     const categorySelect = await screen.findByRole('combobox', { name: /Category/i });
@@ -54,7 +54,7 @@ describe('App - Category filter flow', () => {
 
     // Header updates
     await waitFor(() => {
-      expect(screen.getByText('Filtered by Category')).toBeInTheDocument();
+      expect(screen.getByText('Filtered by Category')).toBeTruthy();
     });
 
     // Count matches filtered meals
