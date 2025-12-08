@@ -33,6 +33,9 @@
   },
   "vitest": {
     "environment": "jsdom",
-    "setupFiles": "./src/tests/setupTests.js"
+    "setupFiles": "./src/tests/setupTests.js",
+    "testEnvironmentOptions": {
+      "customExportConditions": ["react-server", "browser", "default"]
+    }
   }
 }
