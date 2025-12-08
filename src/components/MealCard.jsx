@@ -2,12 +2,13 @@ import React from 'react';
 import './MealCard.css';
 
 const MealCard = ({ meal, onClick }) => {
+    const titleText = meal?.strMeal?.trim() || 'Untitled Recipe';
     return (
         <div className="meal-card" onClick={() => onClick(meal)}>
             <div className="meal-image-wrapper">
                 <img
                     src={meal.strMealThumb}
-                    alt={meal.strMeal}
+                    alt={titleText}
                     className="meal-image"
                     loading="lazy"
                 />
@@ -23,7 +24,7 @@ const MealCard = ({ meal, onClick }) => {
             </div>
 
             <div className="meal-content">
-
+                <h3 className="meal-title" title={titleText} aria-label={titleText}>{titleText}</h3>
                 <div className="meal-meta">
                     {meal.strCategory && (
                         <span className="badge badge-category">
