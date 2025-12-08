@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import React, { useEffect, useState } from 'react';
-
 import { mealAPI } from '../services/api';
 import './MealDetail.css';
 
@@ -11,6 +9,7 @@ const MealDetail = ({ mealId, onClose }) => {
     useEffect(() => {
         loadMealDetails();
     }, [mealId]);
+
 
     const loadMealDetails = async () => {
         try {

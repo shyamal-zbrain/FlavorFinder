@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import MealDetail from '../MealDetail';
-import { vi } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 
 const mockMeal = {
   idMeal: '12345',
