@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { mealAPI } from '../services/api';
 import './FilterBar.css';
 
@@ -31,7 +32,8 @@ const FilterBar = ({ onFilter, onRandomMeal }) => {
         setSelectedCategory(category);
         setSelectedArea('');
         if (category) {
-            onFilter('all', category);
+            setActiveFilter('category');
+            onFilter('category', category);
         } else {
             setActiveFilter('all');
             onFilter('all', '');
